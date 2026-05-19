@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Primarios -->
+    <color name="primary">#00BCD4</color>
+    <color name="primary_dark">#0097A7</color>
+    <color name="accent">#FF5722</color>
+
+    <!-- Fondos dark -->
+    <color name="background_dark">#121212</color>
+    <color name="background_card">#1E1E1E</color>
+    <color name="divider">#2C2C2C</color>
+
+    <!-- Texto -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#AAAAAA</color>
+
+    <!-- Switch -->
+    <color name="switch_thumb_on">#00BCD4</color>
+    <color name="switch_thumb_off">#888888</color>
+    <color name="switch_track_on">#4400BCD4</color>
+    <color name="switch_track_off">#33888888</color>
+
+    <!-- Marcadores -->
+    <color name="marker_me">#4CAF50</color>
+    <color name="marker_other">#2196F3</color>
+    <color name="polyline_me">#4CAF50</color>
+    <color name="polyline_other">#2196F3</color>
 </resources>

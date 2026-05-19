@@ -1,3 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">taller3</string>
+    <string name="app_name">LiveTrack</string>
+    <string name="google_maps_key">TAIzaSyDI-DtxSeRw4qfmuzSR1NeYC8_5U3oNhsw</string>
+
+    <!-- Auth -->
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="nombre">Nombre completo</string>
+    <string name="telefono">Número de teléfono</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="registrarse">Crear cuenta</string>
+    <string name="no_tienes_cuenta">¿No tienes cuenta? Regístrate aquí</string>
+    <string name="ya_tienes_cuenta">¿Ya tienes cuenta? Inicia sesión</string>
+
+    <!-- Perfil -->
+    <string name="mi_perfil">Mi Perfil</string>
+    <string name="foto_perfil">Foto de perfil</string>
+    <string name="agregar_foto">Agregar foto de perfil</string>
+    <string name="cambiar_foto">Cambiar foto</string>
+    <string name="guardar_cambios">Guardar cambios</string>
+    <string name="cambiar_contrasena">Cambiar contraseña</string>
+    <string name="password_actual">Contraseña actual</string>
+    <string name="password_nueva">Nueva contraseña</string>
+    <string name="tomar_foto">Tomar foto</string>
+    <string name="elegir_galeria">Elegir de galería</string>
+
+    <!-- Mapa -->
+    <string name="compartir_ubicacion">Compartir ubicación</string>
+
+    <!-- Mensajes -->
+    <string name="error_campos_vacios">Por favor completa todos los campos</string>
+    <string name="error_password_corta">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="error_login">Error al iniciar sesión: %1$s</string>
+    <string name="error_registro">Error al registrar: %1$s</string>
+    <string name="error_guardar_datos">Error al guardar datos: %1$s</string>
+    <string name="error_reautenticacion">Error de autenticación: %1$s</string>
+    <string name="registro_exitoso">¡Registro exitoso!</string>
+    <string name="datos_actualizados">Datos actualizados correctamente</string>
+    <string name="password_actualizada">Contraseña actualizada</string>
+    <string name="permiso_camara_requerido">Se requiere permiso de cámara</string>
+    <string name="permiso_ubicacion_requerido">Se requiere permiso de ubicación</string>
 </resources>
