@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LiveTrack</string>
-    <string name="google_maps_key">TAIzaSyDI-DtxSeRw4qfmuzSR1NeYC8_5U3oNhsw</string>
+    <string name="google_maps_key">AIzaSyDXPMubnsSOoRLhGUZYVvaMoZPG_qL6cKg</string>
 
     <!-- Auth -->
     <string name="email">Email</string>
@@ -26,6 +26,7 @@
     <string name="elegir_galeria">Elegir de galería</string>
 
     <!-- Mapa -->
+    <string name="map_hint">Activa compartir ubicación para iniciar el rastreo en tiempo real.</string>
     <string name="compartir_ubicacion">Compartir ubicación</string>
 
     <!-- Mensajes -->

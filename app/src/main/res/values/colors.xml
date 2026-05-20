@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primarios -->
     <color name="primary">#00BCD4</color>
     <color name="primary_dark">#0097A7</color>
     <color name="accent">#FF5722</color>
 
-    <!-- Fondos dark -->
-    <color name="background_dark">#121212</color>
-    <color name="background_card">#1E1E1E</color>
-    <color name="divider">#2C2C2C</color>
+    <color name="background_dark">#101214</color>
+    <color name="background_card">#1D2226</color>
+    <color name="field_background">#20262B</color>
+    <color name="field_stroke">#4A555C</color>
+    <color name="divider">#30363D</color>
 
-    <!-- Texto -->
     <color name="text_primary">#FFFFFF</color>
-    <color name="text_secondary">#AAAAAA</color>
+    <color name="text_secondary">#C7CDD1</color>
+    <color name="text_hint">#9EA7AD</color>
+    <color name="text_button">#FFFFFF</color>
 
-    <!-- Switch -->
     <color name="switch_thumb_on">#00BCD4</color>
-    <color name="switch_thumb_off">#888888</color>
-    <color name="switch_track_on">#4400BCD4</color>
-    <color name="switch_track_off">#33888888</color>
+    <color name="switch_thumb_off">#E0E0E0</color>
+    <color name="switch_track_on">#6600BCD4</color>
+    <color name="switch_track_off">#55777777</color>
 
-    <!-- Marcadores -->
     <color name="marker_me">#4CAF50</color>
     <color name="marker_other">#2196F3</color>
     <color name="polyline_me">#4CAF50</color>
     <color name="polyline_other">#2196F3</color>
+
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
 </resources>

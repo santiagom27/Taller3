@@ -6,11 +6,12 @@
         android:id="@+id/action_perfil"
         android:title="Mi Perfil"
         android:icon="@drawable/ic_person"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_logout"
         android:title="Cerrar sesión"
         android:icon="@drawable/ic_logout"
-        app:showAsAction="never"/>
+        app:showAsAction="ifRoom" />
+
 </menu>
