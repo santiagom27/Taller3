@@ -12,9 +12,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.example.taller3.databinding.ActivityRegisterBinding
 import com.example.taller3.model.Usuario
-import com.example.taller3.utils.ImageUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
 class RegisterActivity : AppCompatActivity() {
@@ -77,23 +77,18 @@ class RegisterActivity : AppCompatActivity() {
             registrarUsuario(nombre, email, password, telefono)
         }
 
-        binding.tvVolver.setOnClickListener {
-            finish()
-        }
+        binding.tvVolver.setOnClickListener { finish() }
     }
 
     private fun mostrarOpcionesFoto() {
-        val opciones = arrayOf(
-            getString(R.string.tomar_foto),
-            getString(R.string.elegir_galeria)
-        )
-
+        val opciones = arrayOf(getString(R.string.tomar_foto), getString(R.string.elegir_galeria))
         androidx.appcompat.app.AlertDialog.Builder(this)
             .setTitle(getString(R.string.foto_perfil))
             .setItems(opciones) { _, which ->
                 when (which) {
                     0 -> {
-                        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                            == PackageManager.PERMISSION_GRANTED) {
                             launchCamera()
                         } else {
                             cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
@@ -116,18 +111,18 @@ class RegisterActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnSuccessListener { result ->
                 val uid = result.user?.uid
-
                 if (uid == null) {
                     binding.btnRegistrar.isEnabled = true
                     Toast.makeText(this, getString(R.string.error_registro, "UID no encontrado"), Toast.LENGTH_LONG).show()
                     return@addOnSuccessListener
                 }
 
-                val fotoBase64 = fotoUri?.let { uri ->
-                    ImageUtils.uriToBase64(this, uri)
-                } ?: ""
-
-                guardarUsuarioEnDB(uid, nombre, email, telefono, fotoBase64)
+                val uri = fotoUri
+                if (uri != null) {
+                    subirFotoYGuardar(uid, nombre, email, telefono, uri)
+                } else {
+                    guardarUsuarioEnDB(uid, nombre, email, telefono, "")
+                }
             }
             .addOnFailureListener { e ->
                 binding.btnRegistrar.isEnabled = true
@@ -135,12 +130,33 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 
+    private fun subirFotoYGuardar(
+        uid: String, nombre: String, email: String, telefono: String, uri: Uri
+    ) {
+        val storageRef = FirebaseStorage.getInstance()
+            .reference
+            .child("fotos_perfil/$uid.jpg")
+
+        storageRef.putFile(uri)
+            .addOnSuccessListener {
+                storageRef.downloadUrl
+                    .addOnSuccessListener { downloadUrl ->
+                        guardarUsuarioEnDB(uid, nombre, email, telefono, downloadUrl.toString())
+                    }
+                    .addOnFailureListener { e ->
+                        // Si falla obtener la URL, guardar sin foto
+                        guardarUsuarioEnDB(uid, nombre, email, telefono, "")
+                        Toast.makeText(this, "Foto no disponible: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+            }
+            .addOnFailureListener { e ->
+                binding.btnRegistrar.isEnabled = true
+                Toast.makeText(this, getString(R.string.error_guardar_datos, e.message), Toast.LENGTH_LONG).show()
+            }
+    }
+
     private fun guardarUsuarioEnDB(
-        uid: String,
-        nombre: String,
-        email: String,
-        telefono: String,
-        fotoBase64: String
+        uid: String, nombre: String, email: String, telefono: String, fotoUrl: String
     ) {
         val usuario = Usuario(
             nombre = nombre,
@@ -149,7 +165,7 @@ class RegisterActivity : AppCompatActivity() {
             enLinea = false,
             latitud = 0.0,
             longitud = 0.0,
-            fotoPerfil = fotoBase64
+            fotoPerfil = fotoUrl
         )
 
         FirebaseDatabase.getInstance().reference
